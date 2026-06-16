@@ -28,7 +28,7 @@ Set `fhir.base-url` to point to the upstream FHIR server.
 
 This repository includes a built-in mock FHIR server and seeded data for 5 patients at:
 
-- `/home/runner/work/FHIR_Backend_Microservice/FHIR_Backend_Microservice/src/main/resources/mock-fhir/patient-data.json`
+- `src/main/resources/mock-fhir/patient-data.json`
 
 ### Run mock server (FHIR endpoints only)
 
@@ -48,6 +48,12 @@ The mock server runs on `http://localhost:8081/fhir` and exposes:
 - `GET /fhir/DocumentReference?patient={id}`
 - `GET /fhir/Encounter?patient={id}`
 - `GET /fhir/Procedure?patient={id}`
+- `GET /fhir/Media?patient={id}` — returns a FHIR Bundle of Media resources for the patient
+- `GET /fhir/Media/{id}` — returns the X-ray image as `image/jpeg`
+- `GET /fhir/Media/{id}?metadata=true` — returns the FHIR Media resource metadata as JSON
+
+Each of the 5 mock patients has a chest X-ray JPEG image stored in `src/main/resources/mock-fhir/images/`.
+The images are generated grayscale mock X-rays (512×512 px) with anatomical landmarks and a patient-specific radiology finding label.
 
 ### Point backend to mock server
 
