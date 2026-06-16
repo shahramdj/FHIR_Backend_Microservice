@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +33,25 @@ public class MockFhirController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient not found");
         }
         return patient;
+    }
+
+    @GetMapping("/Media/{id}")
+    public ResponseEntity<?> getMediaImage(@PathVariable String id,
+            @RequestParam(name = "metadata", defaultValue = "false") boolean metadata) {
+        Map<String, Object> mediaResource = mockFhirDataRepository.findMediaById(id);
+        if (mediaResource == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Media not found");
+        }
+        if (metadata) {
+            return ResponseEntity.ok(mediaResource);
+        }
+        byte[] imageBytes = mockFhirDataRepository.loadMediaImageBytes(mediaResource);
+        if (imageBytes == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Image data not found");
+        }
+        return ResponseEntity.ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(imageBytes);
     }
 
     @GetMapping("/{resourceType}")

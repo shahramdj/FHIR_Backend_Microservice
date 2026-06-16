@@ -25,7 +25,8 @@ public class MockFhirDataRepository {
             "ImagingStudy",
             "DocumentReference",
             "Encounter",
-            "Procedure");
+            "Procedure",
+            "Media");
 
     private final Map<String, List<Map<String, Object>>> data;
 
@@ -38,6 +39,30 @@ public class MockFhirDataRepository {
                 .filter(resource -> patientId.equals(resource.get("id")))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public Map<String, Object> findMediaById(String mediaId) {
+        return data.getOrDefault("mediaResources", List.of()).stream()
+                .filter(resource -> mediaId.equals(resource.get("id")))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public byte[] loadMediaImageBytes(Map<String, Object> mediaResource) {
+        Object contentValue = mediaResource.get("content");
+        if (!(contentValue instanceof Map<?, ?> content)) {
+            return null;
+        }
+        Object urlValue = content.get("url");
+        if (!(urlValue instanceof String imageUrl) || imageUrl.isBlank()) {
+            return null;
+        }
+        ClassPathResource imageResource = new ClassPathResource(imageUrl);
+        try (InputStream inputStream = imageResource.getInputStream()) {
+            return inputStream.readAllBytes();
+        } catch (IOException exception) {
+            return null;
+        }
     }
 
     public List<Map<String, Object>> findResourcesByPatient(String resourceType, String patientId) {
@@ -62,6 +87,7 @@ public class MockFhirDataRepository {
             case "DocumentReference" -> "documentReferences";
             case "Encounter" -> "encounters";
             case "Procedure" -> "procedures";
+            case "Media" -> "mediaResources";
             default -> "";
         };
     }
