@@ -1,0 +1,107 @@
+{
+  "patients": [
+    {
+      "resourceType": "Patient",
+      "id": "pat-001",
+      "identifier": [{ "system": "urn:hospital:mrn", "value": "MRN-1001" }],
+      "name": [{ "given": ["Amelia"], "family": "Stone" }],
+      "gender": "female",
+      "birthDate": "1981-02-11"
+    },
+    {
+      "resourceType": "Patient",
+      "id": "pat-002",
+      "identifier": [{ "system": "urn:hospital:mrn", "value": "MRN-1002" }],
+      "name": [{ "given": ["Benjamin"], "family": "Carter" }],
+      "gender": "male",
+      "birthDate": "1975-07-03"
+    },
+    {
+      "resourceType": "Patient",
+      "id": "pat-003",
+      "identifier": [{ "system": "urn:hospital:mrn", "value": "MRN-1003" }],
+      "name": [{ "given": ["Chloe"], "family": "Nguyen" }],
+      "gender": "female",
+      "birthDate": "1990-12-19"
+    },
+    {
+      "resourceType": "Patient",
+      "id": "pat-004",
+      "identifier": [{ "system": "urn:hospital:mrn", "value": "MRN-1004" }],
+      "name": [{ "given": ["David"], "family": "Ortiz" }],
+      "gender": "male",
+      "birthDate": "1968-09-27"
+    },
+    {
+      "resourceType": "Patient",
+      "id": "pat-005",
+      "identifier": [{ "system": "urn:hospital:mrn", "value": "MRN-1005" }],
+      "name": [{ "given": ["Elena"], "family": "Bauer" }],
+      "gender": "female",
+      "birthDate": "1987-04-30"
+    }
+  ],
+  "allergyIntolerances": [
+    { "resourceType": "AllergyIntolerance", "id": "alg-001", "patient": { "reference": "Patient/pat-001" }, "code": { "text": "Penicillin" }, "criticality": "high", "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } },
+    { "resourceType": "AllergyIntolerance", "id": "alg-002", "patient": { "reference": "Patient/pat-002" }, "code": { "text": "Latex" }, "criticality": "high", "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } },
+    { "resourceType": "AllergyIntolerance", "id": "alg-003", "patient": { "reference": "Patient/pat-003" }, "code": { "text": "Peanuts" }, "criticality": "high", "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } },
+    { "resourceType": "AllergyIntolerance", "id": "alg-004", "patient": { "reference": "Patient/pat-004" }, "code": { "text": "Iodinated contrast" }, "criticality": "high", "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } },
+    { "resourceType": "AllergyIntolerance", "id": "alg-005", "patient": { "reference": "Patient/pat-005" }, "code": { "text": "Sulfa drugs" }, "criticality": "low", "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } }
+  ],
+  "conditions": [
+    { "resourceType": "Condition", "id": "con-001", "patient": { "reference": "Patient/pat-001" }, "code": { "text": "Type 2 diabetes mellitus" }, "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } },
+    { "resourceType": "Condition", "id": "con-002", "patient": { "reference": "Patient/pat-002" }, "code": { "text": "Hypertension" }, "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } },
+    { "resourceType": "Condition", "id": "con-003", "patient": { "reference": "Patient/pat-003" }, "code": { "text": "Asthma" }, "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } },
+    { "resourceType": "Condition", "id": "con-004", "patient": { "reference": "Patient/pat-004" }, "code": { "text": "Coronary artery disease" }, "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } },
+    { "resourceType": "Condition", "id": "con-005", "patient": { "reference": "Patient/pat-005" }, "code": { "text": "Hypothyroidism" }, "clinicalStatus": { "text": "active" }, "verificationStatus": { "text": "confirmed" } }
+  ],
+  "medicationRequests": [
+    { "resourceType": "MedicationRequest", "id": "med-001", "patient": { "reference": "Patient/pat-001" }, "medicationCodeableConcept": { "text": "Metformin 500 mg" }, "status": "active", "authoredOn": "2026-05-10" },
+    { "resourceType": "MedicationRequest", "id": "med-002", "patient": { "reference": "Patient/pat-002" }, "medicationCodeableConcept": { "text": "Lisinopril 20 mg" }, "status": "active", "authoredOn": "2026-04-14" },
+    { "resourceType": "MedicationRequest", "id": "med-003", "patient": { "reference": "Patient/pat-003" }, "medicationCodeableConcept": { "text": "Albuterol inhaler" }, "status": "active", "authoredOn": "2026-03-03" },
+    { "resourceType": "MedicationRequest", "id": "med-004", "patient": { "reference": "Patient/pat-004" }, "medicationCodeableConcept": { "text": "Atorvastatin 40 mg" }, "status": "active", "authoredOn": "2026-02-01" },
+    { "resourceType": "MedicationRequest", "id": "med-005", "patient": { "reference": "Patient/pat-005" }, "medicationCodeableConcept": { "text": "Levothyroxine 75 mcg" }, "status": "active", "authoredOn": "2026-01-20" }
+  ],
+  "observations": [
+    { "resourceType": "Observation", "id": "obs-001", "patient": { "reference": "Patient/pat-001" }, "status": "final", "code": { "text": "Hemoglobin" }, "valueQuantity": { "value": 12.5, "unit": "g/dL" }, "effectiveDateTime": "2026-06-10T09:12:00Z" },
+    { "resourceType": "Observation", "id": "obs-002", "patient": { "reference": "Patient/pat-002" }, "status": "final", "code": { "text": "Blood Pressure Systolic" }, "valueQuantity": { "value": 138, "unit": "mmHg" }, "effectiveDateTime": "2026-06-11T10:45:00Z" },
+    { "resourceType": "Observation", "id": "obs-003", "patient": { "reference": "Patient/pat-003" }, "status": "final", "code": { "text": "Oxygen Saturation" }, "valueQuantity": { "value": 97, "unit": "%" }, "effectiveDateTime": "2026-06-09T13:10:00Z" },
+    { "resourceType": "Observation", "id": "obs-004", "patient": { "reference": "Patient/pat-004" }, "status": "final", "code": { "text": "Troponin I" }, "valueQuantity": { "value": 0.01, "unit": "ng/mL" }, "effectiveDateTime": "2026-06-08T08:20:00Z" },
+    { "resourceType": "Observation", "id": "obs-005", "patient": { "reference": "Patient/pat-005" }, "status": "final", "code": { "text": "TSH" }, "valueQuantity": { "value": 2.3, "unit": "mIU/L" }, "effectiveDateTime": "2026-06-07T11:00:00Z" }
+  ],
+  "diagnosticReports": [
+    { "resourceType": "DiagnosticReport", "id": "dr-001", "patient": { "reference": "Patient/pat-001" }, "status": "final", "code": { "text": "Pathology report" }, "conclusion": "No malignancy detected" },
+    { "resourceType": "DiagnosticReport", "id": "dr-002", "patient": { "reference": "Patient/pat-002" }, "status": "final", "code": { "text": "Laboratory summary" }, "conclusion": "Renal panel within normal range" },
+    { "resourceType": "DiagnosticReport", "id": "dr-003", "patient": { "reference": "Patient/pat-003" }, "status": "final", "code": { "text": "Pulmonary function summary" }, "conclusion": "Mild obstructive pattern" },
+    { "resourceType": "DiagnosticReport", "id": "dr-004", "patient": { "reference": "Patient/pat-004" }, "status": "final", "code": { "text": "Cardiology report" }, "conclusion": "Stable ischemic changes" },
+    { "resourceType": "DiagnosticReport", "id": "dr-005", "patient": { "reference": "Patient/pat-005" }, "status": "final", "code": { "text": "Thyroid panel summary" }, "conclusion": "Values in target range" }
+  ],
+  "imagingStudies": [
+    { "resourceType": "ImagingStudy", "id": "img-001", "patient": { "reference": "Patient/pat-001" }, "status": "available", "description": "CT Abdomen", "started": "2026-05-29T09:00:00Z", "series": [{ "description": "Abdomen axial", "modality": { "text": "CT" } }] },
+    { "resourceType": "ImagingStudy", "id": "img-002", "patient": { "reference": "Patient/pat-002" }, "status": "available", "description": "Chest X-Ray", "started": "2026-05-20T14:30:00Z", "series": [{ "description": "PA/Lateral", "modality": { "text": "XRAY" } }] },
+    { "resourceType": "ImagingStudy", "id": "img-003", "patient": { "reference": "Patient/pat-003" }, "status": "available", "description": "MRI Brain", "started": "2026-05-18T16:00:00Z", "series": [{ "description": "T1/T2", "modality": { "text": "MRI" } }] },
+    { "resourceType": "ImagingStudy", "id": "img-004", "patient": { "reference": "Patient/pat-004" }, "status": "available", "description": "Cardiac CT", "started": "2026-05-11T10:00:00Z", "series": [{ "description": "Coronary arteries", "modality": { "text": "CT" } }] },
+    { "resourceType": "ImagingStudy", "id": "img-005", "patient": { "reference": "Patient/pat-005" }, "status": "available", "description": "Thyroid Ultrasound", "started": "2026-05-05T13:15:00Z", "series": [{ "description": "Thyroid", "modality": { "text": "US" } }] }
+  ],
+  "documentReferences": [
+    { "resourceType": "DocumentReference", "id": "doc-001", "patient": { "reference": "Patient/pat-001" }, "status": "current", "type": { "text": "Operative note" } },
+    { "resourceType": "DocumentReference", "id": "doc-002", "patient": { "reference": "Patient/pat-002" }, "status": "current", "type": { "text": "Discharge summary" } },
+    { "resourceType": "DocumentReference", "id": "doc-003", "patient": { "reference": "Patient/pat-003" }, "status": "current", "type": { "text": "Pulmonary consultation" } },
+    { "resourceType": "DocumentReference", "id": "doc-004", "patient": { "reference": "Patient/pat-004" }, "status": "current", "type": { "text": "Cath lab report" } },
+    { "resourceType": "DocumentReference", "id": "doc-005", "patient": { "reference": "Patient/pat-005" }, "status": "current", "type": { "text": "Endocrinology note" } }
+  ],
+  "encounters": [
+    { "resourceType": "Encounter", "id": "enc-001", "patient": { "reference": "Patient/pat-001" }, "status": "finished", "class": { "code": "AMB", "display": "ambulatory" } },
+    { "resourceType": "Encounter", "id": "enc-002", "patient": { "reference": "Patient/pat-002" }, "status": "finished", "class": { "code": "IMP", "display": "inpatient" } },
+    { "resourceType": "Encounter", "id": "enc-003", "patient": { "reference": "Patient/pat-003" }, "status": "finished", "class": { "code": "EMER", "display": "emergency" } },
+    { "resourceType": "Encounter", "id": "enc-004", "patient": { "reference": "Patient/pat-004" }, "status": "in-progress", "class": { "code": "IMP", "display": "inpatient" } },
+    { "resourceType": "Encounter", "id": "enc-005", "patient": { "reference": "Patient/pat-005" }, "status": "finished", "class": { "code": "AMB", "display": "ambulatory" } }
+  ],
+  "procedures": [
+    { "resourceType": "Procedure", "id": "pro-001", "patient": { "reference": "Patient/pat-001" }, "status": "completed", "code": { "text": "Laparoscopic cholecystectomy" }, "performedDateTime": "2024-11-12T09:00:00Z" },
+    { "resourceType": "Procedure", "id": "pro-002", "patient": { "reference": "Patient/pat-002" }, "status": "completed", "code": { "text": "Knee arthroscopy" }, "performedDateTime": "2023-07-01T08:30:00Z" },
+    { "resourceType": "Procedure", "id": "pro-003", "patient": { "reference": "Patient/pat-003" }, "status": "completed", "code": { "text": "Appendectomy" }, "performedDateTime": "2022-03-22T15:00:00Z" },
+    { "resourceType": "Procedure", "id": "pro-004", "patient": { "reference": "Patient/pat-004" }, "status": "completed", "code": { "text": "Coronary angioplasty" }, "performedDateTime": "2021-10-08T11:00:00Z" },
+    { "resourceType": "Procedure", "id": "pro-005", "patient": { "reference": "Patient/pat-005" }, "status": "completed", "code": { "text": "Thyroid biopsy" }, "performedDateTime": "2025-01-16T14:00:00Z" }
+  ]
+}

@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import com.shahramdj.fhirbackendmicroservice.service.FhirPatientContextService;
 import com.shahramdj.fhirbackendmicroservice.service.VoiceCommandRequest;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api")
+@ConditionalOnProperty(name = "backend.api.enabled", havingValue = "true", matchIfMissing = true)
 public class PatientContextController {
 
     private final FhirPatientContextService patientContextService;
